@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Project>
    <description>Automation of Parcel Create and Update for ShippingCart</description>
-   <name>ParcelCreateUpdate</name>
+   <name>ShippingCart</name>
    <tag></tag>
    <UUID>bbd75932-7551-4854-a1c0-171254356efb</UUID>
    <migratedVersion>5.9.0</migratedVersion>
    <pageLoadTimeout>0</pageLoadTimeout>
+   <projectFileLocation>C:\Users\Karla\Katalon Studio\ParcelCreateUpdate\ParcelCreateUpdate.prj</projectFileLocation>
    <sourceContent>
       <sourceFolderList>
          <sourceFolderConfiguration>

@@ -95,8 +95,8 @@ class CalculateShipmentCost {
 		//get min chargeable weight value from response and assign to global variable
 		def min_chargeable = respBody.data[7].settings;
 		def min_chageable_weight_setting = new groovy.json.JsonSlurper().parseText(min_chargeable)
-		GlobalVariable.minimum_chargeable_air = min_chageable_weight_setting.air_cargo.value;
-		GlobalVariable.minimum_chargeable_sea = min_chageable_weight_setting.sea_cargo.value;
+		GlobalVariable.minimum_chargeable_air = min_chageable_weight_setting.air_cargo.value as Double;
+		GlobalVariable.minimum_chargeable_sea = min_chageable_weight_setting.sea_cargo.value as Double;
 
 	}
 
@@ -111,13 +111,13 @@ class CalculateShipmentCost {
 
 			parameter.warehouse_id = GlobalVariable.warehouse_id;
 			parameter.destination_country = GlobalVariable.destination;
-			parameter.length = GlobalVariable.td_shipping_estimate.getValue("item_length",i);
-			parameter.width = GlobalVariable.td_shipping_estimate.getValue("item_width",i);
-			parameter.height = GlobalVariable.td_shipping_estimate.getValue("item_height",i);
-			parameter.weight = GlobalVariable.td_shipping_estimate.getValue("item_weight",i);
-			parameter.insured_value = GlobalVariable.td_shipping_estimate.getValue("insured_value",i);
-			parameter.dangerous = GlobalVariable.td_shipping_estimate.getValue("dangerous",i);
-			parameter.special_handling = GlobalVariable.td_shipping_estimate.getValue("special_handling",i);
+			parameter.length = GlobalVariable.td_shipping_estimate.getValue("item_length",i) as Double;
+			parameter.width = GlobalVariable.td_shipping_estimate.getValue("item_width",i) as Double;
+			parameter.height = GlobalVariable.td_shipping_estimate.getValue("item_height",i) as Double;
+			parameter.weight = GlobalVariable.td_shipping_estimate.getValue("item_weight",i) as Double;
+			parameter.insured_value = GlobalVariable.td_shipping_estimate.getValue("insured_value",i) as Double;
+			parameter.dangerous = GlobalVariable.td_shipping_estimate.getValue("dangerous",i) as boolean;
+			parameter.special_handling = GlobalVariable.td_shipping_estimate.getValue("special_handling",i) as int;
 
 			//send get shipping estimate request
 			ResponseObject response = WS.sendRequest(findTestObject('Get Shipping Estimate', parameter));
@@ -136,8 +136,8 @@ class CalculateShipmentCost {
 			def actual_shipping_fee_sea = respBody.data.sea.usd.total_price as Double;
 
 			//get chargeable weight, cargo fee, insurance fee and total shipping fee
-			shipCalc.getItemChargeableWeight(ship_type, parameter.length, parameter.width, parameter.height, parameter.weight, 
-				GlobalVariable.minimum_chargeable_air, GlobalVariable.minimum_chargeable_sea);
+			shipCalc.getItemChargeableWeight(ship_type, parameter.length, parameter.width, parameter.height, parameter.weight,
+					GlobalVariable.minimum_chargeable_air, GlobalVariable.minimum_chargeable_sea);
 			shipCalc.getTotalCargoFee(ship_type, parameter.special_handling);
 			shipCalc.getInsuranceFee(parameter.insured_value);
 			shipCalc.getTotalShippingFee();

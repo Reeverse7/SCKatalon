@@ -50,33 +50,25 @@ class ShippingCalculation {
 	 * @return a boolean to indicate whether the response status code equals the expected one
 	 */
 	@Keyword
-	def getItemChargeableWeight(String shipment_type, String lngth, String wdth, String hght, String wght, String minChargeAir, String minChargeSea) {
+	def getItemChargeableWeight(String shipment_type, double lngth, double wdth, double hght, double wght, double minChargeAir, double minChargeSea) {
 
-		double length = lngth as Double;
-		double width = wdth as Double;
-		double height = hght as Double;
-		double weight = wght as Double;
-		double minSea = minChargeSea as Double;
-		double minAir = minChargeAir as Double;
-
-		def volumetric_weight = (length *width*height)/166;
+		def volumetric_weight = (lngth *wdth*hght)/166;
 		volumetric_weight = volumetric_weight.round(2);
 
 		if (shipment_type == "sea") {
-			def item_chargeable_weight_sea = Math.max(volumetric_weight, minSea);
+			def item_chargeable_weight_sea = Math.max(volumetric_weight, minChargeSea);
 			GlobalVariable.item_chargeable_sea = item_chargeable_weight_sea;
 			println "item chargeable weight for sea: " + GlobalVariable.item_chargeable_sea
 		}else if (shipment_type == "air"){
-			def max1 = Math.max(volumetric_weight, weight);
-			def item_chargeable_weight_air = Math.max(max1, minAir);
+			def max1 = Math.max(volumetric_weight, wght);
+			def item_chargeable_weight_air = Math.max(max1, minChargeAir);
 			GlobalVariable.item_chargeable_air = item_chargeable_weight_air;
 			println "item chargeable weight for air: " + GlobalVariable.item_chargeable_air
 		}
 	}
 
 	@Keyword
-	def getTotalCargoFee(String ship_type, String spcl_hndling){
-		int special_handling = spcl_hndling as int;
+	def getTotalCargoFee(String ship_type, int spcl_hndling){
 		double item_chargeable_weight;
 		def lbs_value;
 		double total_cargo_fee;
@@ -85,7 +77,7 @@ class ShippingCalculation {
 			item_chargeable_weight = GlobalVariable.item_chargeable_air as Double;
 			item_chargeable_weight = item_chargeable_weight.round(2);
 
-			if(special_handling == 1){
+			if(spcl_hndling == 1){
 				lbs_value = GlobalVariable.per_pound_specialhandling as Double;
 				println("per pound value for special handling: " + lbs_value)
 			}else{
@@ -105,14 +97,13 @@ class ShippingCalculation {
 	}
 
 	@Keyword
-	def getInsuranceFee(String insured_val){
+	def getInsuranceFee(double insured_val){
 		double insurance_free = GlobalVariable.free_insurance as Double;
 		double insurance_percentage = GlobalVariable.insurance_percentage as Double;
-		double insured_value = insured_val as Double;
 		double insurance_fee;
 
-		if(insured_value > insurance_free){
-			insurance_fee = (Math.abs(insurance_percentage/100) * (insured_value - insurance_free));
+		if(insured_val > insurance_free){
+			insurance_fee = (Math.abs(insurance_percentage/100) * (insured_val - insurance_free));
 			insurance_fee = insurance_fee.round(2);
 		}else{
 			insurance_fee = 0;
