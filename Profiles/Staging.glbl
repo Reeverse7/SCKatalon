@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalVariableEntities>
+   <description></description>
+   <name>Staging</name>
+   <tag></tag>
+   <defaultProfile>false</defaultProfile>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://api.staging.lbcx.ph/v1'</initValue>
+      <name>base_url</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMzU3ZjNiOGJhNWJjYmQiLCJpYXQiOjE1NzE3MzIyMTAsImp0aSI6MTU3MTczMjIxMH0.mTiBLbF4g8LNFaUT0ug8xVD6vd5765Rqx3AJA3-2cz4'</initValue>
+      <name>token</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>findTestData('BulkParcelCreate')</initValue>
+      <name>td_parcel_data</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>0</initValue>
+      <name>parcel_id</name>
+   </GlobalVariableEntity>
+</GlobalVariableEntities>

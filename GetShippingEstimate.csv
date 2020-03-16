@@ -1,0 +1,13 @@
+item_length,item_width,item_height,item_weight,insured_value,dangerous,special_handling,scenario
+5,6,7,12,200,0,0,"Actual weight, no insurance, regular"
+5,6,7,12,200,0,1,"Actual weight, no insurance, SH air"
+5,6,7,12,670,0,0,"Actual weight, with insurance, regular"
+5,6,7,12,950,0,1,"Actual weight, with insurance, SH air"
+12,13,14,11,200,0,0,"Volumetric weight, no insurance, regular"
+12,13,14,11,200,0,1,"Volumetric weight, no insurance, SH air"
+12,13,14,11,1300,0,0,"Volumetric weight, with insurance, regular"
+12,13,14,11,2100,0,1,"Volumetric weight, with insurance, SH air"
+0.2,0.5,0.6,0.9,200,0,0,"Min chargeable weight, no insurance, regular"
+0.2,0.5,0.6,0.9,200,0,1,"Min chargeable weight, no insurance, SH air"
+0.2,0.5,0.6,0.9,1580,0,0,"Min chargeable weight, with insurance, regular"
+0.2,0.5,0.6,0.9,1900,0,1,"Min chargeable weight, with insurance, SH air"

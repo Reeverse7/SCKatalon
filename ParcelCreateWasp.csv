@@ -1,0 +1,16 @@
+account_number,warehouse,item_courier_tracking,item_courier,shop_name,bin,item_name,item_length,item_width,item_height,item_weight,item_dangerous,item_prohibited,special_handling,item_air,item_sea
+10-596665,hayward_usa,247WASPTEST0227202011,DHL,AMAZON,A1F1100,WASP Test 1,5,6,4,3,false,false,false,true,true
+10-596665,hayward_usa,247WASPTEST0227202012,DHL,AMAZON,A1F1100,WASP Test 2,6,7,6,4,false,false,false,true,true
+10-596665,hayward_usa,247WASPTEST0227202013,DHL,AMAZON,A1F1100,WASP Test 3,7,8,8,5,false,false,false,true,true
+10-596665,hayward_usa,247WASPTEST0227202014,DHL,AMAZON,A1F1100,WASP Test 4,8,9,2,6,false,false,false,true,true
+10-596665,hayward_usa,247WASPTEST0227202015,DHL,AMAZON,A1F1100,WASP Test 5,9,10,4,7,false,false,false,true,true
+10-596665,hayward_usa,247WASPTEST0227202016,DHL,AMAZON,A1F1100,WASP Test 6,10,11,6,8,false,false,false,true,true
+10-596665,hayward_usa,247WASPTEST0227202017,DHL,AMAZON,A1F1100,WASP Test 7,11,12,1,9,false,false,false,true,true
+10-596665,hayward_usa,247WASPTEST0227202018,DHL,AMAZON,A1F1100,WASP Test 8,12,13,6,10,false,false,false,true,true
+10-596665,hayward_usa,247WASPTEST0227202019,DHL,AMAZON,A1F1100,WASP Test 9,13,14,8,11,false,false,false,true,true
+10-596665,hayward_usa,247WASPTEST0227202020,DHL,AMAZON,A1F1100,WASP Test 10,13,14,8,11,false,false,false,true,true
+10-596665,hayward_usa,247WASPTEST0227202021,DHL,AMAZON,A1F1100,WASP Test 11,6,7,6,4,false,false,false,true,true
+10-596665,hayward_usa,247WASPTEST0227202022,DHL,AMAZON,A1F1100,WASP Test 12,7,8,8,5,false,false,false,true,true
+10-596665,hayward_usa,247WASPTEST0227202023,DHL,AMAZON,A1F1100,WASP Test 13,8,9,2,6,false,false,false,true,true
+10-596665,hayward_usa,247WASPTEST0227202024,DHL,AMAZON,A1F1100,WASP Test 14,9,10,4,7,false,false,false,true,true
+10-596665,hayward_usa,247WASPTEST0227202025,DHL,AMAZON,A1F1100,WASP Test 15,10,11,6,8,false,false,false,true,true

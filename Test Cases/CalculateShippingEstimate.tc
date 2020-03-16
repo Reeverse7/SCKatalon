@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Calculate Shipment Cost estimate based on origin and destination</description>
+   <name>CalculateShippingEstimate</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>2b9ccae5-4edc-4fc5-b350-ac12ff36c243</testCaseGuid>
+</TestCaseEntity>
