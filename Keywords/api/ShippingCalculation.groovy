@@ -84,16 +84,24 @@ class ShippingCalculation {
 				lbs_value = GlobalVariable.per_pound_air as Double;
 				println("per pound value for air cargo: " + lbs_value)
 			}
+			println("AIR Fixed fee: "+ GlobalVariable.air_fixed_fee)
+			total_cargo_fee = ((item_chargeable_weight * lbs_value) + (GlobalVariable.air_fixed_fee as Double));
+			GlobalVariable.total_cargo_fee = total_cargo_fee.round(2);
+			println("Total Cargo Fee:" + GlobalVariable.total_cargo_fee);
+			
 		}else if (ship_type == "sea"){
 			item_chargeable_weight = GlobalVariable.item_chargeable_sea as Double;
 			item_chargeable_weight = item_chargeable_weight.round(2);
 			lbs_value = GlobalVariable.per_pound_sea as Double;
 			println("per pound value for sea cargo: " + lbs_value)
+			println("SEA Fixed fee: "+ GlobalVariable.sea_fixed_fee)
+			total_cargo_fee = ((item_chargeable_weight * lbs_value) + (GlobalVariable.sea_fixed_fee as Double));
+			GlobalVariable.total_cargo_fee = total_cargo_fee.round(2);
 		}
 
-		println("Fixed fee: "+ GlobalVariable.fixed_fee)
-		total_cargo_fee = ((item_chargeable_weight * lbs_value) + GlobalVariable.fixed_fee);
-		GlobalVariable.total_cargo_fee = total_cargo_fee.round(2);
+//		println("Fixed fee: "+ GlobalVariable.air_fixed_fee)
+//		total_cargo_fee = ((item_chargeable_weight * lbs_value) + GlobalVariable.air_fixed_fee);
+//		GlobalVariable.total_cargo_fee = total_cargo_fee.round(2);
 	}
 
 	@Keyword

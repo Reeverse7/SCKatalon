@@ -42,7 +42,12 @@
    <GlobalVariableEntity>
       <description></description>
       <initValue>0</initValue>
-      <name>fixed_fee</name>
+      <name>sea_fixed_fee</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>0</initValue>
+      <name>air_fixed_fee</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
