@@ -145,14 +145,14 @@ class CalculateShipmentCost {
 
 			if (ship_type == "air"){
 				shipCalc.checkExpectedAndActualResults(GlobalVariable.total_cargo_fee, actual_total_air_cargo_fee);
-				//shipCalc.checkExpectedAndActualResults(GlobalVariable.item_chargeable_air, actual_chargeable_weight_air);
-				//shipCalc.checkExpectedAndActualResults(GlobalVariable.insurance_fee, insurance_fee_air);
-				//shipCalc.checkExpectedAndActualResults(GlobalVariable.total_shipping_fee, actual_shipping_fee_air);
+				shipCalc.checkExpectedAndActualResults(GlobalVariable.item_chargeable_air, actual_chargeable_weight_air);
+				shipCalc.checkExpectedAndActualResults(GlobalVariable.insurance_fee, insurance_fee_air);
+				shipCalc.checkExpectedAndActualResults(GlobalVariable.total_shipping_fee, actual_shipping_fee_air);
 			}else if (ship_type == "sea"){
 				shipCalc.checkExpectedAndActualResults(GlobalVariable.total_cargo_fee, actual_total_sea_cargo_fee);
-				//shipCalc.checkExpectedAndActualResults(GlobalVariable.item_chargeable_air, actual_chargeable_weight_sea);
-				//shipCalc.checkExpectedAndActualResults(GlobalVariable.insurance_fee, insurance_fee_sea);
-				//shipCalc.checkExpectedAndActualResults(GlobalVariable.total_shipping_fee, actual_shipping_fee_sea);
+				shipCalc.checkExpectedAndActualResults(GlobalVariable.item_chargeable_air, actual_chargeable_weight_sea);
+				shipCalc.checkExpectedAndActualResults(GlobalVariable.insurance_fee, insurance_fee_sea);
+				shipCalc.checkExpectedAndActualResults(GlobalVariable.total_shipping_fee, actual_shipping_fee_sea);
 			}
 		}
 	}
