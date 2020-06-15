@@ -6,7 +6,7 @@
    <containsHeaders>true</containsHeaders>
    <csvSeperator>COMMA</csvSeperator>
    <dataFileGUID>875739b2-601c-49c8-94a9-00fd9f0bd31f</dataFileGUID>
-   <dataSourceUrl>C:\Users\Karla\Desktop\SC\Automation Data\WASPParcelCreate.csv</dataSourceUrl>
+   <dataSourceUrl>C:\Users\Karla\Katalon Studio\ShippingCart\ParcelCreateWasp.csv</dataSourceUrl>
    <driver>CSV</driver>
    <isInternalPath>false</isInternalPath>
    <query></query>
