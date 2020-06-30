@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalVariableEntities>
    <description></description>
-   <name>SC API Staging</name>
+   <name>SC API Prod</name>
    <tag></tag>
    <defaultProfile>false</defaultProfile>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://sc-api.staging.shippingcart.com'</initValue>
+      <initValue>'https://sc-api.prod.shippingcart.com'</initValue>
       <name>base_url</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -37,12 +37,7 @@
    <GlobalVariableEntity>
       <description></description>
       <initValue>0</initValue>
-      <name>per_pound_sh_air</name>
-   </GlobalVariableEntity>
-   <GlobalVariableEntity>
-      <description></description>
-      <initValue>0</initValue>
-      <name>per_pound_sh_sea</name>
+      <name>per_pound_specialhandling</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>

@@ -85,8 +85,9 @@ class CalculateShipmentCost {
 		def per_pound_setting = new groovy.json.JsonSlurper().parseText(per_pound)
 		GlobalVariable.per_pound_air = per_pound_setting.lbs_value_air.value;
 		GlobalVariable.per_pound_sea = per_pound_setting.lbs_value_sea.value;
-		GlobalVariable.per_pound_specialhandling = per_pound_setting.lbs_value_special_handling_air.value
-
+		GlobalVariable.per_pound_sh_air = per_pound_setting.lbs_value_special_handling_air.value
+		GlobalVariable.per_pound_sh_sea = per_pound_setting.lbs_value_special_handling_sea.value
+		
 		//get fixed fee value from response and assign to global variable
 		def fixed_fee = respBody.data[5].settings;
 		def fixed_fees_setting = new groovy.json.JsonSlurper().parseText(fixed_fee)
