@@ -18,12 +18,6 @@ import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords
 
-import internal.GlobalVariable
-//
-//import MobileBuiltInKeywords as Mobile
-//import WSBuiltInKeywords as WS
-//import WebUiBuiltInKeywords as WebUI
-
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.By
@@ -40,56 +34,49 @@ import com.kms.katalon.core.mobile.helper.MobileElementCommonHelper
 import com.kms.katalon.core.util.KeywordUtil
 
 import com.kms.katalon.core.webui.exception.WebElementNotFoundException
-
+import internal.GlobalVariable
 
 class ShippingCalculation {
 
-	/**
-	 * Send request and verify status code
-	 * @param request request object, must be an instance of RequestObject
-	 * @param expectedStatusCode
-	 * @return a boolean to indicate whether the response status code equals the expected one
-	 */
-
 	@Keyword
 	def getInsuranceFee(double insured_val){
-		double insurance_free = GlobalVariable.free_insurance as Double;
-		double insurance_percentage = GlobalVariable.insurance_percentage as Double;
-		double insurance_fee;
+		double insurance_free = GlobalVariable.free_insurance as Double
+		double insurance_percentage = GlobalVariable.insurance_percentage as Double
+		double insurance_fee
 
 		if(insured_val > insurance_free){
-			insurance_fee = (Math.abs(insurance_percentage/100) * (insured_val - insurance_free));
-			insurance_fee = insurance_fee.round(2);
+			insurance_fee = (Math.abs(insurance_percentage/100) * (insured_val - insurance_free))
+			insurance_fee = insurance_fee.round(2)
 		}else{
-			insurance_fee = 0;
+			insurance_fee = 0
 		}
-		GlobalVariable.insurance_fee = insurance_fee;
-		println("Total Valuation Fee:" + GlobalVariable.insurance_fee);
+		GlobalVariable.insurance_fee = insurance_fee
+		println("Total Valuation Fee:" + GlobalVariable.insurance_fee)
 	}
 
 	@Keyword
 	def getTotalShippingFee(){
-		double total_ship_fee;
+		double total_ship_fee
 		total_ship_fee = (GlobalVariable.total_cargo_fee as Double) + (GlobalVariable.insurance_fee as Double) + (GlobalVariable.total_storage_fee as Double)
-		GlobalVariable.total_shipping_fee = total_ship_fee.round(2);
-		println("Total Shipping Fee is: " + GlobalVariable.total_shipping_fee);
+		GlobalVariable.total_shipping_fee = total_ship_fee.round(2)
+		println("Total Shipping Fee is: " + GlobalVariable.total_shipping_fee)
 	}
 
 
 	@Keyword
 	def getDefaultStorageFee(int stored_days, double wght){
-		double total_storage_fee;
+		double total_storage_fee
 		if (stored_days <= GlobalVariable.storage_days_free){
-			GlobalVariable.total_storage_fee = 0;
+			GlobalVariable.total_storage_fee = 0
 		}else{
 			total_storage_fee = ((stored_days - (GlobalVariable.storage_days_free as Double)) * GlobalVariable.storage_fee * wght)
-			GlobalVariable.total_storage_fee = total_storage_fee.round(2);
-			println("Total Storage Fee is: " + GlobalVariable.total_storage_fee);
+			GlobalVariable.total_storage_fee = total_storage_fee.round(2)
+			println("Total Storage Fee is: " + GlobalVariable.total_storage_fee)
 		}
 	}
 
 	@Keyword
-	def checkExpectedAndActualResults(Double expected, Double actual){
+	def checkExpectedAndActualAmount(Double expected, Double actual){
 		if(expected == actual){
 			KeywordUtil.markPassed("Expected Result: " + expected + " And Actual Result: " + actual + " are equal.")
 		}else{

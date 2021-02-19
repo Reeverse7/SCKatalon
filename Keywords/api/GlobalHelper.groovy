@@ -31,15 +31,4 @@ public class GlobalHelper {
 			GlobalVariable.warehouse_id = 3;
 		}
 	}
-	
-	@Keyword
-	public static getShipmentCalculation(String ship_type){
-		if (ship_type == "air"){
-			return new AirShippingCalculation()
-		} else if (ship_type == "sea") {
-			return new SeaShippingCalculation()
-		} 
-		
-		throw new IllegalArgumentException("Shipment type " + ship_type + " not supported.")
-	}
 }

@@ -51,8 +51,15 @@ class CalculateShipmentCost {
 	@When('I calculate shipping estimate for shipment type "(.*)"')
 	def I_calculate_shipping_estimate(String ship_type) {
 
-		def ship_calc = GlobalHelper.getShipmentCalculation(ship_type)
-
+		def ship_calc
+		if (ship_type == "air"){
+			ship_calc = new AirShippingCalculation()
+		} else if (ship_type == "sea") {
+			ship_calc = new SeaShippingCalculation()
+		} else {
+			throw new IllegalArgumentException("Shipment type " + ship_type + " not supported.")
+		}
+		
 		//get parcel dimensions from data
 		def ship_estimate_param =  [:];
 		def row_count = (GlobalVariable.td_shipping_estimate).getRowNumbers();
@@ -96,9 +103,9 @@ class CalculateShipmentCost {
 		def actual_chargeable_weight = shipmentTypeValues.usd.total_chargeable_weight as Double
 		def actual_shipping_fee = shipmentTypeValues.usd.total_price as Double
 
-		ship_calc.checkExpectedAndActualResults(GlobalVariable.total_cargo_fee, actual_total_cargo_fee)
-		ship_calc.checkExpectedAndActualResults(GlobalVariable.item_chargeable, actual_chargeable_weight)
-		ship_calc.checkExpectedAndActualResults(GlobalVariable.insurance_fee, insurance_fee)
-		ship_calc.checkExpectedAndActualResults(GlobalVariable.total_shipping_fee, actual_shipping_fee)
+		ship_calc.checkExpectedAndActualAmount(GlobalVariable.total_cargo_fee, actual_total_cargo_fee)
+		ship_calc.checkExpectedAndActualAmount(GlobalVariable.item_chargeable, actual_chargeable_weight)
+		ship_calc.checkExpectedAndActualAmount(GlobalVariable.insurance_fee, insurance_fee)
+		ship_calc.checkExpectedAndActualAmount(GlobalVariable.total_shipping_fee, actual_shipping_fee)
 	}
 }

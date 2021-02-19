@@ -52,30 +52,24 @@ class ItemCartShipmentCalculation {
 	@When('I calculate "(.*)" cargo shipment cost for single item')
 	def I_update_insured_value(String ship_type) {
 
-		def ship_calc = GlobalHelper.getShipmentCalculation(ship_type)
-
 		//update parcel insured value
 		def parcel_param =  [:]
 		def cart_calc_param = [:]
 		def row_count = (GlobalVariable.td_cart_items).getRowNumbers()
 
+		def ship_calc
+		if (ship_type == "air"){
+			ship_calc = new AirShippingCalculation()
+		} else if (ship_type == "sea") {
+			ship_calc = new SeaShippingCalculation()
+		} else {
+			throw new IllegalArgumentException("Shipment type " + ship_type + " not supported.")
+		}
+		
 		for (int i = 1; i <= row_count; i++) {
 
 			parcel_param.insured_value = GlobalVariable.td_cart_items.getValue("insured_value",i) as Double
 			parcel_param.item_id = GlobalVariable.td_cart_items.getValue("item_id",i)
-
-			cart_calc_param.warehouse_id = GlobalVariable.warehouse_id
-			cart_calc_param.origin = GlobalVariable.origin
-			cart_calc_param.destination = GlobalVariable.destination
-
-			//identify cargo type
-			if (ship_type == "air"){
-				cart_calc_param.air_item_id = parcel_param.item_id
-				cart_calc_param.sea_item_id = ''
-			}else{
-				cart_calc_param.sea_item_id = parcel_param.item_id
-				cart_calc_param.air_item_id = ''
-			}
 
 			//send update insured value request and verify response
 			ResponseObject update_insured_val = WS.sendRequest(findTestObject('Update Item Insured Value', parcel_param))
@@ -95,6 +89,20 @@ class ItemCartShipmentCalculation {
 			cart_calc_param.weight = parcel_detail_slurper.data.dimensions.weight.weight as Double
 			cart_calc_param.special_handling = parcel_detail_slurper.data.flags.special_handling as int
 			cart_calc_param.storage_days = parcel_detail_slurper.data.storage.total_days as int
+
+			cart_calc_param.warehouse_id = GlobalVariable.warehouse_id
+			cart_calc_param.origin = GlobalVariable.origin
+			cart_calc_param.destination = GlobalVariable.destination
+
+			//identify cargo type
+
+			if (ship_type == "air"){
+				cart_calc_param.air_item_id = parcel_param.item_id
+				cart_calc_param.sea_item_id = ''
+			} else if (ship_type == "sea") {
+				cart_calc_param.sea_item_id = parcel_param.item_id
+				cart_calc_param.air_item_id = ''
+			}
 
 			//get Shipment cost
 			ResponseObject cart_computation = WS.sendRequest(findTestObject('Cart Computation', cart_calc_param))
@@ -125,11 +133,11 @@ class ItemCartShipmentCalculation {
 		def actual_shipping_fee = shipment_type_values.usd.total_price as Double
 		def actual_storage_fee = shipment_type_values.usd.total_storage_charge as Double
 
-		ship_calc.checkExpectedAndActualResults(GlobalVariable.total_cargo_fee, actual_total_cargo_fee)
-		ship_calc.checkExpectedAndActualResults(GlobalVariable.item_chargeable, actual_chargeable_weight)
-		ship_calc.checkExpectedAndActualResults(GlobalVariable.insurance_fee, insurance_fee)
-		ship_calc.checkExpectedAndActualResults(GlobalVariable.total_storage_fee, actual_storage_fee)
-		ship_calc.checkExpectedAndActualResults(GlobalVariable.total_shipping_fee, actual_shipping_fee)
+		ship_calc.checkExpectedAndActualAmount(GlobalVariable.total_cargo_fee, actual_total_cargo_fee)
+		ship_calc.checkExpectedAndActualAmount(GlobalVariable.item_chargeable, actual_chargeable_weight)
+		ship_calc.checkExpectedAndActualAmount(GlobalVariable.insurance_fee, insurance_fee)
+		ship_calc.checkExpectedAndActualAmount(GlobalVariable.total_storage_fee, actual_storage_fee)
+		ship_calc.checkExpectedAndActualAmount(GlobalVariable.total_shipping_fee, actual_shipping_fee)
 	}
 
 }
