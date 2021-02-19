@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebServiceRequestEntity>
    <description>Get shipping cost upon selecting item in cart</description>
-   <name>Item Selection Shipping Computation</name>
+   <name>Cart Computation</name>
    <tag></tag>
    <elementGuidId>5d9effe4-c9cc-4c60-8747-48c843ec6ced</elementGuidId>
    <selectorMethod>BASIC</selectorMethod>
@@ -36,6 +36,20 @@
    <soapHeader></soapHeader>
    <soapRequestMethod></soapRequestMethod>
    <soapServiceFunction></soapServiceFunction>
+   <variables>
+      <defaultValue>GlobalVariable.base_url</defaultValue>
+      <description></description>
+      <id>6e94ef30-edbf-4be9-aee4-ea685db82fd0</id>
+      <masked>false</masked>
+      <name>base_url</name>
+   </variables>
+   <variables>
+      <defaultValue>GlobalVariable.customer_token</defaultValue>
+      <description></description>
+      <id>ba896447-6998-4f25-904d-5112f38f4691</id>
+      <masked>false</masked>
+      <name>customer_token</name>
+   </variables>
    <verificationScript>import static org.assertj.core.api.Assertions.*
 
 import com.kms.katalon.core.testobject.RequestObject

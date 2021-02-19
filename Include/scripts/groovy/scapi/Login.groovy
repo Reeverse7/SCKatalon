@@ -1,4 +1,4 @@
-package calculator
+package scapi
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
@@ -46,22 +46,19 @@ import cucumber.api.java.en.When
 
 class Login {
 
-	def parameter = [:];
+	def login_param = [:];
 
 	@When("I login my ShippingCart Account")
 	def I_login_shippingcart_account() {
-		parameter.base_url = GlobalVariable.base_url;
 
 		//send get login request and save token to global variable
-		ResponseObject response = WS.sendRequest(findTestObject('Object Repository/Login', parameter));
+		ResponseObject response = WS.sendRequest(findTestObject('Login', login_param));
 		WS.verifyResponseStatusCode(response, 200);
 
 		//parse response body
 		def loginslurper = new groovy.json.JsonSlurper();
 		def respBody = loginslurper.parseText(response.getResponseBodyContent());
 
-		def customerToken = respBody.token;
-		GlobalVariable.customer_token = customerToken;
-		println(customerToken)
+		GlobalVariable.customer_token = respBody.token;
 	}
 }

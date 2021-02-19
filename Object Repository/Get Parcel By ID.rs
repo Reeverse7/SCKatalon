@@ -25,6 +25,20 @@
    <soapHeader></soapHeader>
    <soapRequestMethod></soapRequestMethod>
    <soapServiceFunction></soapServiceFunction>
+   <variables>
+      <defaultValue>GlobalVariable.base_url</defaultValue>
+      <description></description>
+      <id>409d9b4a-3863-4940-bafa-8eec332f6d86</id>
+      <masked>false</masked>
+      <name>base_url</name>
+   </variables>
+   <variables>
+      <defaultValue>GlobalVariable.customer_token</defaultValue>
+      <description></description>
+      <id>3cc155ef-1959-4a79-8b08-ebb9146ee485</id>
+      <masked>false</masked>
+      <name>customer_token</name>
+   </variables>
    <verificationScript>import static org.assertj.core.api.Assertions.*
 
 import com.kms.katalon.core.testobject.RequestObject

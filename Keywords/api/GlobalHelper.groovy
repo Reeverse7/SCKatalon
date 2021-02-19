@@ -22,7 +22,7 @@ import internal.GlobalVariable
 
 public class GlobalHelper {
 	@Keyword
-	def setWarehouseId(String origin){
+	public static setWarehouseId(String origin){
 		if (origin == "US"){
 			GlobalVariable.warehouse_id = 1;
 		} else if (origin == "UK"){
@@ -30,5 +30,16 @@ public class GlobalHelper {
 		} else if (origin == "AU"){
 			GlobalVariable.warehouse_id = 3;
 		}
+	}
+	
+	@Keyword
+	public static getShipmentCalculation(String ship_type){
+		if (ship_type == "air"){
+			return new AirShippingCalculation()
+		} else if (ship_type == "sea") {
+			return new SeaShippingCalculation()
+		} 
+		
+		throw new IllegalArgumentException("Shipment type " + ship_type + " not supported.")
 	}
 }

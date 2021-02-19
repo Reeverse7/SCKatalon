@@ -20,23 +20,16 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import internal.GlobalVariable
 
-public class AirShippingCalculation extends ShippingCalculation {
-
-	/**
-	 * Send request and verify status code
-	 * @param request request object, must be an instance of RequestObject
-	 * @param expectedStatusCode
-	 * @return a boolean to indicate whether the response status code equals the expected one
-	 */
+public class SeaShippingCalculation extends ShippingCalculation {
+	
 	@Keyword
 	def getItemChargeableWeight(double lngth, double wdth, double hght, double wght, double minChargeAir, double minChargeSea) {
 
 		def volumetric_weight = ((lngth *wdth*hght)/166).round(2)
+		def item_chargeable_weight_sea = Math.max(volumetric_weight, minChargeSea);
+		GlobalVariable.item_chargeable = item_chargeable_weight_sea;
+		println "item chargeable weight for sea: " + GlobalVariable.item_chargeable
 
-		def max1 = Math.max(volumetric_weight, wght);
-		def item_chargeable_weight_air = Math.max(max1, minChargeAir);
-		GlobalVariable.item_chargeable = item_chargeable_weight_air;
-		println "item chargeable weight for air: " + GlobalVariable.item_chargeable
 	}
 
 	@Keyword
@@ -47,17 +40,19 @@ public class AirShippingCalculation extends ShippingCalculation {
 
 		item_chargeable_weight = GlobalVariable.item_chargeable as Double;
 		item_chargeable_weight = item_chargeable_weight.round(2);
-
-		if(spcl_hndling == 1){
-			lbs_value = GlobalVariable.per_pound_sh_air as Double;
-			println("per pound value for air special handling: " + lbs_value)
-		}else{
-			lbs_value = GlobalVariable.per_pound_air as Double;
-			println("per pound value for air cargo: " + lbs_value)
+		
+		if (spcl_hndling == 1){
+		lbs_value = GlobalVariable.per_pound_sh_sea as Double;
+		println("per pound value for sea special handling: " + lbs_value)
+		} else{
+		lbs_value = GlobalVariable.per_pound_sea as Double;
+		println("per pound value for sea cargo: " + lbs_value)
 		}
-		println("AIR Fixed fee: "+ GlobalVariable.air_fixed_fee)
-		total_cargo_fee = ((item_chargeable_weight * lbs_value) + (GlobalVariable.air_fixed_fee as Double));
+		println("SEA Fixed fee: "+ GlobalVariable.sea_fixed_fee)
+		total_cargo_fee = ((item_chargeable_weight * lbs_value) + (GlobalVariable.sea_fixed_fee as Double));
 		GlobalVariable.total_cargo_fee = total_cargo_fee.round(2);
 		println("Total Cargo Fee:" + GlobalVariable.total_cargo_fee);
 	}
+
+	
 }
