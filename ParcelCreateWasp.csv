@@ -1,31 +1,21 @@
 account_number,warehouse,item_courier_tracking,item_courier,shop_name,bin,item_name,item_length,item_width,item_height,item_weight,item_dangerous,item_prohibited,special_handling,item_air,item_sea
-37-379060,hayward_usa,DEMOKTLN0624202001,DHL,AMAZON,A1F1100,ITEM_DG,5,6,7,9,true,false,false,true,true
-37-379060,hayward_usa,DEMOKTLN0624202002,DHL,AMAZON,A1F1100,ITEM_SH,4,5,6,7,false,false,true,true,false
-37-379060,hayward_usa,DEMOKTLN0624202003,DHL,AMAZON,A1F1100,ITEM_SH 1,8,6,3,4,false,false,true,true,false
-37-379060,hayward_usa,DEMOKTLN0624202004,DHL,AMAZON,A1F1100,WASP item 4,1,6,3,4,false,false,false,true,true
-37-379060,hayward_usa,DEMOKTLN0624202005,DHL,AMAZON,A1F1100,WASP item 5,3,7,4,2,false,false,false,true,true
-37-379060,hayward_usa,DEMOKTLN0624202006,DHL,AMAZON,A1F1100,WASP item 6,2,9,8,5,false,false,false,true,true
-37-379060,hayward_usa,DEMOKTLN0624202007,DHL,AMAZON,A1F1100,WASP item 7,5,6,7,9,false,false,false,true,true
-37-379060,hayward_usa,DEMOKTLN0624202008,DHL,AMAZON,A1F1100,WASP item 8,4,5,6,7,false,false,false,true,true
-37-379060,hayward_usa,DEMOKTLN0624202009,DHL,AMAZON,A1F1100,WASP item 9,8,6,3,4,false,false,false,true,true
-37-379060,hayward_usa,DEMOKTLN0624202010,DHL,AMAZON,A1F1100,WASP item 10,1,6,3,4,false,false,false,true,true
-37-379060,hayward_usa,DEMOKTLN0624202011,DHL,AMAZON,A1F1100,WASP item 11,3,7,4,2,false,false,false,true,true
-37-379060,hayward_usa,DEMOKTLN0624202012,DHL,AMAZON,A1F1100,WASP item 12,2,9,8,5,false,false,false,true,true
-37-379060,hayward_usa,DEMOKTLN0624202013,DHL,AMAZON,A1F1100,WASP item 13,5,6,7,9,false,false,false,true,true
-37-379060,hayward_usa,DEMOKTLN0624202014,DHL,AMAZON,A1F1100,WASP item 14,4,5,6,7,false,false,false,true,true
-37-379060,hayward_usa,DEMOKTLN0624202015,DHL,AMAZON,A1F1100,WASP item 15,8,6,3,4,false,false,false,true,true
-37-379060,hayward_usa,DEMOKTLN0624202016,DHL,AMAZON,A1F1100,WASP item 16,1,6,3,4,false,false,false,true,true
-37-379060,hayward_usa,DEMOKTLN0624202017,DHL,AMAZON,A1F1100,WASP item 17,3,7,4,2,false,false,false,true,true
-37-379060,hayward_usa,DEMOKTLN0624202018,DHL,AMAZON,A1F1100,WASP item 18,2,9,8,5,false,false,false,true,true
-37-379060,hayward_usa,DEMOKTLN0624202019,DHL,AMAZON,A1F1100,WASP item 19,5,6,7,9,false,false,false,true,true
-37-379060,hayward_usa,DEMOKTLN0624202020,DHL,AMAZON,A1F1100,WASP item 20,5,6,7,9,false,false,false,true,true
-37-379060,hayward_usa,DEMOKTLN0624202021,DHL,AMAZON,A1F1100,WASP item 21,5,6,7,9,false,false,false,true,true
-37-379060,hayward_usa,DEMOKTLN0624202022,DHL,AMAZON,A1F1100,WASP item 22,4,5,6,7,false,false,false,true,true
-37-379060,hayward_usa,DEMOKTLN0624202023,DHL,AMAZON,A1F1100,WASP item 23,8,6,3,4,false,false,false,true,true
-37-379060,hayward_usa,DEMOKTLN0624202024,DHL,AMAZON,A1F1100,WASP item 24,1,6,3,4,false,false,false,true,true
-37-379060,hayward_usa,DEMOKTLN0624202025,DHL,AMAZON,A1F1100,WASP item 25,3,7,4,2,false,false,false,true,true
-37-379060,hayward_usa,DEMOKTLN0624202026,DHL,AMAZON,A1F1100,WASP item 26,2,9,8,5,false,false,false,true,true
-37-379060,hayward_usa,DEMOKTLN0624202027,DHL,AMAZON,A1F1100,WASP item 27,5,6,7,9,false,false,false,true,true
-37-379060,hayward_usa,DEMOKTLN0624202028,DHL,AMAZON,A1F1100,WASP item 28,4,5,6,7,false,false,false,true,true
-37-379060,hayward_usa,DEMOKTLN0624202029,DHL,AMAZON,A1F1100,WASP item 29,8,6,3,4,false,false,false,true,true
-37-379060,hayward_usa,DEMOKTLN0624202030,DHL,AMAZON,A1F1100,WASP item 30,1,6,3,4,false,false,false,true,true
+64-784740,hayward_usa,USWASP02102121,DHL,AMAZON,A1F1100,US parcel 21,5,6,7,12,false,false,false,true,true
+64-784740,hayward_usa,USWASP02102122,DHL,AMAZON,A1F1100,US parcel 22,5,6,7,12,false,false,false,true,true
+64-784740,hayward_usa,USWASP02102123,DHL,AMAZON,A1F1100,US parcel 23,5,6,7,12,false,false,false,true,true
+64-784740,hayward_usa,USWASP02102124,DHL,AMAZON,A1F1100,US parcel 24,5,6,7,12,false,false,false,true,true
+64-784740,hayward_usa,USWASP02102125,DHL,AMAZON,A1F1100,US parcel 25,12,13,14,11,false,false,false,true,true
+64-784740,hayward_usa,USWASP02102126,DHL,AMAZON,A1F1100,US parcel 26,12,13,14,11,false,false,false,true,true
+64-784740,hayward_usa,USWASP02102127,DHL,AMAZON,A1F1100,US parcel 27,12,13,14,11,false,false,false,true,true
+64-784740,hayward_usa,USWASP02102128,DHL,AMAZON,A1F1100,US parcel 28,12,13,14,11,false,false,false,true,true
+64-784740,hayward_usa,USWASP02102129,DHL,AMAZON,A1F1100,US parcel 29,0.2,0.5,0.6,0.9,false,false,false,true,true
+64-784740,hayward_usa,USWASP02102130,DHL,AMAZON,A1F1100,US parcel 30,0.2,0.5,0.6,0.9,false,false,false,true,true
+64-784740,hayward_usa,USWASP02102131,DHL,AMAZON,A1F1100,US parcel 31,0.2,0.5,0.6,0.9,false,false,false,true,true
+64-784740,hayward_usa,USWASP02102132,DHL,AMAZON,A1F1100,US parcel 32,0.2,0.5,0.6,0.9,false,false,false,true,true
+64-784740,hayward_usa,USWASP02102133,DHL,AMAZON,A1F1100,US parcel 33,5,6,7,12,false,false,false,true,true
+64-784740,hayward_usa,USWASP02102134,DHL,AMAZON,A1F1100,US parcel 34,5,6,7,12,false,false,false,true,true
+64-784740,hayward_usa,USWASP02102135,DHL,AMAZON,A1F1100,US parcel 35,5,6,7,12,false,false,false,true,true
+64-784740,hayward_usa,USWASP02102136,DHL,AMAZON,A1F1100,US parcel 36,5,6,7,12,false,false,false,true,true
+64-784740,hayward_usa,USWASP02102137,DHL,AMAZON,A1F1100,US parcel 37,12,13,14,11,false,false,false,true,true
+64-784740,hayward_usa,USWASP02102138,DHL,AMAZON,A1F1100,US parcel 38,12,13,14,11,false,false,false,true,true
+64-784740,hayward_usa,USWASP02102139,DHL,AMAZON,A1F1100,US parcel 39,12,13,14,11,false,false,false,true,true
+64-784740,hayward_usa,USWASP02102140,DHL,AMAZON,A1F1100,US parcel 40,0.2,0.5,0.6,0.9,false,false,false,true,true

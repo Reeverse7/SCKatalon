@@ -67,12 +67,7 @@
    <GlobalVariableEntity>
       <description></description>
       <initValue>0</initValue>
-      <name>item_chargeable_air</name>
-   </GlobalVariableEntity>
-   <GlobalVariableEntity>
-      <description></description>
-      <initValue>0</initValue>
-      <name>item_chargeable_sea</name>
+      <name>item_chargeable</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
@@ -98,5 +93,40 @@
       <description></description>
       <initValue>''</initValue>
       <name>destination</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>''</initValue>
+      <name>customer_token</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>findTestData('Cart Items')</initValue>
+      <name>td_cart_items</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>''</initValue>
+      <name>origin</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>''</initValue>
+      <name>item_id</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>0</initValue>
+      <name>storage_days_free</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>0</initValue>
+      <name>storage_fee</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>0</initValue>
+      <name>total_storage_fee</name>
    </GlobalVariableEntity>
 </GlobalVariableEntities>

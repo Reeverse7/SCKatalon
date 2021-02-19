@@ -21,6 +21,16 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
+      <initValue>findTestData('SplitOrders')</initValue>
+      <name>td_orders</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>findTestData('wms')</initValue>
+      <name>td_wms</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
       <initValue>0</initValue>
       <name>parcel_id</name>
    </GlobalVariableEntity>

@@ -94,4 +94,14 @@
       <initValue>''</initValue>
       <name>destination</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>''</initValue>
+      <name>customer_token</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>findTestData('Cart Items')</initValue>
+      <name>td_cart_items</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>

@@ -43,6 +43,7 @@ import com.kms.katalon.core.webui.exception.WebElementNotFoundException
 
 
 class ShippingCalculation {
+
 	/**
 	 * Send request and verify status code
 	 * @param request request object, must be an instance of RequestObject
@@ -50,61 +51,59 @@ class ShippingCalculation {
 	 * @return a boolean to indicate whether the response status code equals the expected one
 	 */
 	@Keyword
-	def getItemChargeableWeight(String shipment_type, double lngth, double wdth, double hght, double wght, double minChargeAir, double minChargeSea) {
+	def getItemChargeableWeight(double lngth, double wdth, double hght, double wght, double minChargeAir, double minChargeSea) {
 
-		def volumetric_weight = (lngth *wdth*hght)/166;
-		volumetric_weight = volumetric_weight.round(2);
-
-		if (shipment_type == "sea") {
-			def item_chargeable_weight_sea = Math.max(volumetric_weight, minChargeSea);
-			GlobalVariable.item_chargeable_sea = item_chargeable_weight_sea;
-			println "item chargeable weight for sea: " + GlobalVariable.item_chargeable_sea
-		}else if (shipment_type == "air"){
-			def max1 = Math.max(volumetric_weight, wght);
-			def item_chargeable_weight_air = Math.max(max1, minChargeAir);
-			GlobalVariable.item_chargeable_air = item_chargeable_weight_air;
-			println "item chargeable weight for air: " + GlobalVariable.item_chargeable_air
-		}
+		//		def volumetric_weight = ((lngth *wdth*hght)/166).round(2)
+		//
+		//		if (shipment_type == "sea") {
+		//			def item_chargeable_weight_sea = Math.max(volumetric_weight, minChargeSea);
+		//			GlobalVariable.item_chargeable = item_chargeable_weight_sea;
+		//			println "item chargeable weight for sea: " + GlobalVariable.item_chargeable
+		//		}else if (shipment_type == "air"){
+		//			def max1 = Math.max(volumetric_weight, wght);
+		//			def item_chargeable_weight_air = Math.max(max1, minChargeAir);
+		//			GlobalVariable.item_chargeable = item_chargeable_weight_air;
+		//			println "item chargeable weight for air: " + GlobalVariable.item_chargeable
+		//		}
 	}
 
 	@Keyword
-	def getTotalCargoFee(String ship_type, int spcl_hndling){
-		double item_chargeable_weight;
-		def lbs_value;
-		double total_cargo_fee;
-
-		if (ship_type == "air"){
-			item_chargeable_weight = GlobalVariable.item_chargeable_air as Double;
-			item_chargeable_weight = item_chargeable_weight.round(2);
-
-			if(spcl_hndling == 1){
-				lbs_value = GlobalVariable.per_pound_sh_air as Double;
-				println("per pound value for air special handling: " + lbs_value)
-			}else{
-				lbs_value = GlobalVariable.per_pound_air as Double;
-				println("per pound value for air cargo: " + lbs_value)
-			}
-			println("AIR Fixed fee: "+ GlobalVariable.air_fixed_fee)
-			total_cargo_fee = ((item_chargeable_weight * lbs_value) + (GlobalVariable.air_fixed_fee as Double));
-			GlobalVariable.total_cargo_fee = total_cargo_fee.round(2);
-			println("Total Cargo Fee:" + GlobalVariable.total_cargo_fee);
-			
-		}else if (ship_type == "sea"){
-			item_chargeable_weight = GlobalVariable.item_chargeable_sea as Double;
-			item_chargeable_weight = item_chargeable_weight.round(2);
-			
-			if(spcl_hndling == 1){
-				lbs_value = GlobalVariable.per_pound_sh_sea as Double;
-				println("per pound value for sea special handling: " + lbs_value)
-			}else{
-				lbs_value = GlobalVariable.per_pound_sea as Double;
-				println("per pound value for sea cargo: " + lbs_value)
-			}
-			println("SEA Fixed fee: "+ GlobalVariable.sea_fixed_fee)
-			total_cargo_fee = ((item_chargeable_weight * lbs_value) + (GlobalVariable.sea_fixed_fee as Double));
-			GlobalVariable.total_cargo_fee = total_cargo_fee.round(2);
-			println("Total Cargo Fee:" + GlobalVariable.total_cargo_fee);
-		}
+	def getTotalCargoFee(int spcl_hndling){
+		//		double item_chargeable_weight;
+		//		def lbs_value;
+		//		double total_cargo_fee;
+		//
+		//		if (ship_type == "air"){
+		//			item_chargeable_weight = GlobalVariable.item_chargeable as Double;
+		//			item_chargeable_weight = item_chargeable_weight.round(2);
+		//
+		//			if(spcl_hndling == 1){
+		//				lbs_value = GlobalVariable.per_pound_sh_air as Double;
+		//				println("per pound value for air special handling: " + lbs_value)
+		//			}else{
+		//				lbs_value = GlobalVariable.per_pound_air as Double;
+		//				println("per pound value for air cargo: " + lbs_value)
+		//			}
+		//			println("AIR Fixed fee: "+ GlobalVariable.air_fixed_fee)
+		//			total_cargo_fee = ((item_chargeable_weight * lbs_value) + (GlobalVariable.air_fixed_fee as Double));
+		//			GlobalVariable.total_cargo_fee = total_cargo_fee.round(2);
+		//			println("Total Cargo Fee:" + GlobalVariable.total_cargo_fee);
+		//		}else if (ship_type == "sea"){
+		//			item_chargeable_weight = GlobalVariable.item_chargeable as Double;
+		//			item_chargeable_weight = item_chargeable_weight.round(2);
+		//
+		//			if(spcl_hndling == 1){
+		//				lbs_value = GlobalVariable.per_pound_sh_sea as Double;
+		//				println("per pound value for sea special handling: " + lbs_value)
+		//			}else{
+		//				lbs_value = GlobalVariable.per_pound_sea as Double;
+		//				println("per pound value for sea cargo: " + lbs_value)
+		//			}
+		//			println("SEA Fixed fee: "+ GlobalVariable.sea_fixed_fee)
+		//			total_cargo_fee = ((item_chargeable_weight * lbs_value) + (GlobalVariable.sea_fixed_fee as Double));
+		//			GlobalVariable.total_cargo_fee = total_cargo_fee.round(2);
+		//			println("Total Cargo Fee:" + GlobalVariable.total_cargo_fee);
+		//		}
 	}
 
 	@Keyword
@@ -120,13 +119,28 @@ class ShippingCalculation {
 			insurance_fee = 0;
 		}
 		GlobalVariable.insurance_fee = insurance_fee;
+		println("Total Valuation Fee:" + GlobalVariable.insurance_fee);
 	}
 
 	@Keyword
 	def getTotalShippingFee(){
 		double total_ship_fee;
-		total_ship_fee = (GlobalVariable.total_cargo_fee as Double) + (GlobalVariable.insurance_fee as Double)
+		total_ship_fee = (GlobalVariable.total_cargo_fee as Double) + (GlobalVariable.insurance_fee as Double) + (GlobalVariable.total_storage_fee as Double)
 		GlobalVariable.total_shipping_fee = total_ship_fee.round(2);
+		println("Total Shipping Fee is: " + GlobalVariable.total_shipping_fee);
+	}
+
+
+	@Keyword
+	def getDefaultStorageFee(int stored_days, double wght){
+		double total_storage_fee;
+		if (stored_days <= GlobalVariable.storage_days_free){
+			GlobalVariable.total_storage_fee = 0;
+		}else{
+			total_storage_fee = ((stored_days - (GlobalVariable.storage_days_free as Double)) * GlobalVariable.storage_fee * wght)
+			GlobalVariable.total_storage_fee = total_storage_fee.round(2);
+			println("Total Storage Fee is: " + GlobalVariable.total_storage_fee);
+		}
 	}
 
 	@Keyword
@@ -134,7 +148,7 @@ class ShippingCalculation {
 		if(expected == actual){
 			KeywordUtil.markPassed("Expected Result: " + expected + " And Actual Result: " + actual + " are equal.")
 		}else{
-			KeywordUtil.markWarning("Expected Result: " + expected + " And Actual Result: " + actual + " did not match.")
+			KeywordUtil.markFailed("Expected Result: " + expected + " And Actual Result: " + actual + " did not match.")
 		}
 	}
 }

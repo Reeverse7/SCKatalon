@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <DataFileEntity>
    <description></description>
-   <name>BulkParcelCreate</name>
+   <name>Cart Items</name>
    <tag></tag>
    <containsHeaders>true</containsHeaders>
    <csvSeperator>COMMA</csvSeperator>
-   <dataFileGUID>72fde700-da85-48ef-95ee-68f8ca604b41</dataFileGUID>
-   <dataSourceUrl>C:\Users\Karla\Katalon Studio\ShippingCart\PacelCreateWhapi.csv</dataSourceUrl>
+   <dataFileGUID>44edcab8-85c9-409f-a1ad-1db9af536e93</dataFileGUID>
+   <dataSourceUrl>C:\Users\Karla\Katalon Studio\ShippingCart\Cart Items.csv</dataSourceUrl>
    <driver>CSV</driver>
    <isInternalPath>false</isInternalPath>
    <query></query>

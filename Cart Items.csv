@@ -1,0 +1,3 @@
+item_id,insured_value,scenario
+748415,100,"US, no insurance fee"
+748415,850,"US, with insurance fee"
