@@ -6,10 +6,11 @@
    <elementGuidId>e58ea15c-4261-45c2-82a7-4f123ddf17ba</elementGuidId>
    <selectorMethod>BASIC</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
+   <connectionTimeout>-1</connectionTimeout>
    <followRedirects>false</followRedirects>
    <httpBody></httpBody>
    <httpBodyContent>{
-  &quot;text&quot;: &quot;{\n  \&quot;id\&quot;: null,\n  \&quot;warehouse\&quot;: \&quot;${warehouse}\&quot;,\n  \&quot;parentPackageId\&quot;: null,\n  \&quot;packageType\&quot;: \&quot;INBOUND\&quot;,\n  \&quot;customer\&quot;: {\n    \&quot;account\&quot;: \&quot;${account_number}\&quot;,\n    \&quot;name\&quot;: \&quot;WASP Four\&quot;,\n    \&quot;type\&quot;: \&quot;\&quot;\n  },\n  \&quot;receivedAt\&quot;: \&quot;2021-02-08T06:27:39.420Z\&quot;,\n  \&quot;dimensions\&quot;: [\n    {\n      \&quot;timestamp\&quot;: \&quot;2021-02-08T06:27:39.420Z\&quot;,\n      \&quot;workstationId\&quot;: \&quot;ws_001\&quot;,\n      \&quot;dimensions\&quot;: {\n        \&quot;volume\&quot;: {\n          \&quot;width\&quot;: 0.01,\n          \&quot;height\&quot;: 0.01,\n          \&quot;length\&quot;: 0.01,\n          \&quot;uom\&quot;: \&quot;in\&quot;\n        },\n        \&quot;weight\&quot;: {\n          \&quot;weight\&quot;: 0.01,\n          \&quot;uom\&quot;: \&quot;lb\&quot;\n        }\n      }\n    }\n  ],\n  \&quot;barcodes\&quot;: [\n    {\n      \&quot;id\&quot;: \&quot;Other 1\&quot;,\n      \&quot;code\&quot;: \&quot;${item_courier_tracking}\&quot;,\n      \&quot;courier\&quot;: \&quot;Others\&quot;,\n      \&quot;isTracking\&quot;: true\n    }\n  ],\n  \&quot;description\&quot;: {\n    \&quot;allowedAir\&quot;: false,\n    \&quot;allowedSea\&quot;: false,\n    \&quot;prohibited\&quot;: false,\n    \&quot;description\&quot;: \&quot;.\&quot;,\n    \&quot;prohibitedDescription\&quot;: \&quot;\&quot;,\n    \&quot;dangerous\&quot;: false,\n    \&quot;inboundBin\&quot;: \&quot;\&quot;,\n    \&quot;shopName\&quot;: \&quot;\&quot;,\n    \&quot;rfid\&quot;: \&quot;\&quot;\n  },\n  \&quot;resources\&quot;: [],\n  \&quot;updateWMS\&quot;: false,\n  \&quot;packageItems\&quot;: [],\n  \&quot;iteration\&quot;: 0\n}&quot;,
+  &quot;text&quot;: &quot;{\n  \&quot;id\&quot;: null,\n  \&quot;warehouse\&quot;: \&quot;${warehouse}\&quot;,\n  \&quot;parentPackageId\&quot;: null,\n  \&quot;packageType\&quot;: \&quot;INBOUND\&quot;,\n  \&quot;customer\&quot;: {\n    \&quot;account\&quot;: \&quot;${account_number}\&quot;,\n    \&quot;name\&quot;: \&quot;${account_name}\&quot;,\n    \&quot;type\&quot;: \&quot;\&quot;\n  },\n  \&quot;receivedAt\&quot;: \&quot;${received_at_warehouse}\&quot;,\n  \&quot;dimensions\&quot;: [\n    {\n      \&quot;timestamp\&quot;: \&quot;${received_at_warehouse}\&quot;,\n      \&quot;workstationId\&quot;: \&quot;ws_001\&quot;,\n      \&quot;dimensions\&quot;: {\n        \&quot;volume\&quot;: {\n          \&quot;width\&quot;: 0.25,\n          \&quot;height\&quot;: 0.25,\n          \&quot;length\&quot;: 0.25,\n          \&quot;uom\&quot;: \&quot;in\&quot;\n        },\n        \&quot;weight\&quot;: {\n          \&quot;weight\&quot;: 0.25,\n          \&quot;uom\&quot;: \&quot;lb\&quot;\n        }\n      }\n    }\n  ],\n  \&quot;barcodes\&quot;: [\n    {\n      \&quot;id\&quot;: \&quot;Other 1\&quot;,\n      \&quot;code\&quot;: \&quot;${item_courier_tracking}\&quot;,\n      \&quot;courier\&quot;: \&quot;Others\&quot;,\n      \&quot;isTracking\&quot;: true\n    }\n  ],\n  \&quot;description\&quot;: {\n    \&quot;allowedAir\&quot;: false,\n    \&quot;allowedSea\&quot;: false,\n    \&quot;prohibited\&quot;: false,\n    \&quot;description\&quot;: \&quot;\&quot;,\n    \&quot;prohibitedDescription\&quot;: \&quot;\&quot;,\n    \&quot;dangerous\&quot;: false,\n    \&quot;inboundBin\&quot;: \&quot;\&quot;,\n    \&quot;shopName\&quot;: \&quot;\&quot;,\n    \&quot;rfid\&quot;: \&quot;\&quot;,\n    \&quot;specialHandlingItem\&quot;: false\n  },\n  \&quot;resources\&quot;: [],\n  \&quot;updateWMS\&quot;: false,\n  \&quot;packageItems\&quot;: [],\n  \&quot;iteration\&quot;: 0,\n  \&quot;order\&quot;: {},\n  \&quot;specialRequests\&quot;: [],\n  \&quot;hasPendingSpecialRequests\&quot;: false,\n  \&quot;inboundProcessCompleted\&quot;: false\n}&quot;,
   &quot;contentType&quot;: &quot;application/json&quot;,
   &quot;charset&quot;: &quot;UTF-8&quot;
 }</httpBodyContent>
@@ -28,6 +29,7 @@
       <type>Main</type>
       <value>${token}</value>
    </httpHeaderProperties>
+   <maxResponseSize>-1</maxResponseSize>
    <migratedVersion>5.4.1</migratedVersion>
    <restRequestMethod>POST</restRequestMethod>
    <restUrl>${base_url}/packages</restUrl>
@@ -35,7 +37,10 @@
    <soapBody></soapBody>
    <soapHeader></soapHeader>
    <soapRequestMethod></soapRequestMethod>
+   <soapServiceEndpoint></soapServiceEndpoint>
    <soapServiceFunction></soapServiceFunction>
+   <socketTimeout>-1</socketTimeout>
+   <useServiceInfoFromWsdl>true</useServiceInfoFromWsdl>
    <verificationScript>import static org.assertj.core.api.Assertions.*
 
 import com.kms.katalon.core.testobject.RequestObject

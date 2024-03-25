@@ -65,11 +65,12 @@ class ItemCartShipmentCalculation {
 		} else {
 			throw new IllegalArgumentException("Shipment type " + ship_type + " not supported.")
 		}
-		
+
 		for (int i = 1; i <= row_count; i++) {
 
 			parcel_param.insured_value = GlobalVariable.td_cart_items.getValue("insured_value",i) as Double
 			parcel_param.item_id = GlobalVariable.td_cart_items.getValue("item_id",i)
+			parcel_param.sc_protect = GlobalVariable.td_cart_items.getValue("sc_protect",i)
 
 			//send update insured value request and verify response
 			ResponseObject update_insured_val = WS.sendRequest(findTestObject('Update Item Insured Value', parcel_param))
@@ -88,7 +89,11 @@ class ItemCartShipmentCalculation {
 			cart_calc_param.height = parcel_detail_slurper.data.dimensions.volume.height as Double
 			cart_calc_param.weight = parcel_detail_slurper.data.dimensions.weight.weight as Double
 			cart_calc_param.special_handling = parcel_detail_slurper.data.flags.special_handling as int
+			cart_calc_param.offsize = parcel_detail_slurper.data.flags.off_size as int
 			cart_calc_param.storage_days = parcel_detail_slurper.data.storage.total_days as int
+			cart_calc_param.is_damaged = parcel_detail_slurper.data.is_damaged
+			GlobalVariable.is_damaged = cart_calc_param.is_damaged
+			println("Damaged Item :" + GlobalVariable.is_damaged)
 
 			cart_calc_param.warehouse_id = GlobalVariable.warehouse_id
 			cart_calc_param.origin = GlobalVariable.origin
@@ -115,8 +120,8 @@ class ItemCartShipmentCalculation {
 			//get chargeable weight, cargo fee, insurance fee, storage fee and total shipping fee
 			ship_calc.getItemChargeableWeight(cart_calc_param.length, cart_calc_param.width, cart_calc_param.height, cart_calc_param.weight,
 					GlobalVariable.minimum_chargeable_air, GlobalVariable.minimum_chargeable_sea)
-			ship_calc.getTotalCargoFee(cart_calc_param.special_handling)
-			ship_calc.getInsuranceFee(parcel_param.insured_value)
+			ship_calc.getTotalCargoFee(cart_calc_param.special_handling ,cart_calc_param.offsize )
+			ship_calc.getInsuranceFee(parcel_param.insured_value as double, parcel_param.sc_protect as int)
 			ship_calc.getDefaultStorageFee(cart_calc_param.storage_days, cart_calc_param.weight)
 			ship_calc.getTotalShippingFee()
 
@@ -127,12 +132,20 @@ class ItemCartShipmentCalculation {
 	def checkCalculations(ShippingCalculation ship_calc, LazyMap cart_compute_map, String shipment_type){
 		def shipment_type_values = cart_compute_map.get("data").get(shipment_type)
 
+		//get actual results from shipping estimate response
 		def actual_total_cargo_fee = shipment_type_values.usd.total_cargo as Double
-		def insurance_fee = shipment_type_values.usd.total_insurance as Double
+		// Access the insurance total from the nested structure
+		def insurance_fee = shipment_type_values.usd.total_insurance.toDouble() as Double
+		insurance_fee = insurance_fee.round(2)
+		//		println("Total Insurance Fee: " + insurance_fee)
+
 		def actual_chargeable_weight = shipment_type_values.usd.total_chargeable_weight as Double
 		def actual_shipping_fee = shipment_type_values.usd.total_price as Double
 		def actual_storage_fee = shipment_type_values.usd.total_storage_charge as Double
+		//		ship_calc.getTotalShippingFee()
 
+
+		//verify expected and actual results
 		ship_calc.checkExpectedAndActualAmount(GlobalVariable.total_cargo_fee, actual_total_cargo_fee)
 		ship_calc.checkExpectedAndActualAmount(GlobalVariable.item_chargeable, actual_chargeable_weight)
 		ship_calc.checkExpectedAndActualAmount(GlobalVariable.insurance_fee, insurance_fee)

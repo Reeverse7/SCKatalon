@@ -59,7 +59,7 @@ class CalculateShipmentCost {
 		} else {
 			throw new IllegalArgumentException("Shipment type " + ship_type + " not supported.")
 		}
-		
+
 		//get parcel dimensions from data
 		def ship_estimate_param =  [:];
 		def row_count = (GlobalVariable.td_shipping_estimate).getRowNumbers();
@@ -74,6 +74,7 @@ class CalculateShipmentCost {
 			ship_estimate_param.insured_value = GlobalVariable.td_shipping_estimate.getValue("insured_value",i) as Double;
 			ship_estimate_param.dangerous = GlobalVariable.td_shipping_estimate.getValue("dangerous",i) as boolean;
 			ship_estimate_param.special_handling = GlobalVariable.td_shipping_estimate.getValue("special_handling",i) as int;
+			ship_estimate_param.off_size = GlobalVariable.td_shipping_estimate.getValue("off_size",i) as int;
 
 			//send get shipping estimate request
 			ResponseObject shipping_estimate = WS.sendRequest(findTestObject('Get Shipping Estimate', ship_estimate_param));
@@ -86,7 +87,7 @@ class CalculateShipmentCost {
 			//get chargeable weight, cargo fee, insurance fee and total shipping fee
 			ship_calc.getItemChargeableWeight(ship_estimate_param.length, ship_estimate_param.width, ship_estimate_param.height, ship_estimate_param.weight,
 					GlobalVariable.minimum_chargeable_air, GlobalVariable.minimum_chargeable_sea)
-			ship_calc.getTotalCargoFee(ship_estimate_param.special_handling)
+			ship_calc.getTotalCargoFee(ship_estimate_param.special_handling,ship_estimate_param.off_size)
 			ship_calc.getInsuranceFee(ship_estimate_param.insured_value);
 			ship_calc.getTotalShippingFee();
 

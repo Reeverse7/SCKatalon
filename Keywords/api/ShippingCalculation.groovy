@@ -39,19 +39,25 @@ import internal.GlobalVariable
 class ShippingCalculation {
 
 	@Keyword
-	def getInsuranceFee(double insured_val){
-		double insurance_free = GlobalVariable.free_insurance as Double
-		double insurance_percentage = GlobalVariable.insurance_percentage as Double
+	def getInsuranceFee(double insured_val, int sc_protect){
+		// double insurance_free = GlobalVariable.free_insurance as Double
+		double insurance_percentage = GlobalVariable.stere_insurance_percentage as Double
 		double insurance_fee
 
-		if(insured_val > insurance_free){
-			insurance_fee = (Math.abs(insurance_percentage/100) * (insured_val - insurance_free))
+		// Check if the item is damaged and sc_protect is 1
+		boolean is_damaged = GlobalVariable.is_damaged
+
+		if(sc_protect == 1 && !is_damaged){
+			// If sc_protect is 1 and item is not damaged, calculate insurance fee
+			insurance_fee = (Math.abs(insurance_percentage/100) * (insured_val))
 			insurance_fee = insurance_fee.round(2)
-		}else{
+		} else {
+			// If sc_protect is not 1 or item is damaged, set insurance fee to zero
 			insurance_fee = 0
+
 		}
-		GlobalVariable.insurance_fee = insurance_fee
-		println("Total Valuation Fee:" + GlobalVariable.insurance_fee)
+		GlobalVariable.insurance_fee = insurance_fee.round(2)
+		println("Total Insurance Fee: " + GlobalVariable.insurance_fee)
 	}
 
 	@Keyword
@@ -61,7 +67,6 @@ class ShippingCalculation {
 		GlobalVariable.total_shipping_fee = total_ship_fee.round(2)
 		println("Total Shipping Fee is: " + GlobalVariable.total_shipping_fee)
 	}
-
 
 	@Keyword
 	def getDefaultStorageFee(int stored_days, double wght){

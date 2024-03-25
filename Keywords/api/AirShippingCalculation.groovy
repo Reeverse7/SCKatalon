@@ -22,12 +22,6 @@ import internal.GlobalVariable
 
 public class AirShippingCalculation extends ShippingCalculation {
 
-	/**
-	 * Send request and verify status code
-	 * @param request request object, must be an instance of RequestObject
-	 * @param expectedStatusCode
-	 * @return a boolean to indicate whether the response status code equals the expected one
-	 */
 	@Keyword
 	def getItemChargeableWeight(double lngth, double wdth, double hght, double wght, double minChargeAir, double minChargeSea) {
 
@@ -40,7 +34,7 @@ public class AirShippingCalculation extends ShippingCalculation {
 	}
 
 	@Keyword
-	def getTotalCargoFee(int spcl_hndling){
+	def getTotalCargoFee(int spcl_hndling, int off_size){
 		double item_chargeable_weight;
 		def lbs_value;
 		double total_cargo_fee;
@@ -50,7 +44,7 @@ public class AirShippingCalculation extends ShippingCalculation {
 
 		if(spcl_hndling == 1){
 			lbs_value = GlobalVariable.per_pound_sh_air as Double;
-			println("per pound value for air special handling: " + lbs_value)
+			println("per pound value for for air special handling: " + lbs_value)
 		}else{
 			lbs_value = GlobalVariable.per_pound_air as Double;
 			println("per pound value for air cargo: " + lbs_value)

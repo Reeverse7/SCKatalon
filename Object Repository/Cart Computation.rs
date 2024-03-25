@@ -6,10 +6,12 @@
    <elementGuidId>5d9effe4-c9cc-4c60-8747-48c843ec6ced</elementGuidId>
    <selectorMethod>BASIC</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
+   <autoUpdateContent>false</autoUpdateContent>
+   <connectionTimeout>-1</connectionTimeout>
    <followRedirects>false</followRedirects>
    <httpBody></httpBody>
    <httpBodyContent>{
-  &quot;text&quot;: &quot;{\n  \&quot;token\&quot;:\&quot;${customer_token}\&quot;,\n  \&quot;air\&quot;: {\n    \&quot;items\&quot;: [\n      ${air_item_id}\n    ]\n  },\n  \&quot;sea\&quot;:{\n    \&quot;items\&quot;: [\n      ${sea_item_id}\n    ]\n  },\n  \&quot;shipment_location_details\&quot;: {\n    \&quot;origin\&quot;: \&quot;${origin}\&quot;,\n    \&quot;destination\&quot;: \&quot;${destination}\&quot;\n  },\n  \&quot;insurance\&quot;: {\n    \&quot;${item_id}\&quot;: \&quot;${insured_value}\&quot;\n  },\n  \&quot;warehouse_id\&quot;: {\n    \&quot;${item_id}\&quot;: ${warehouse_id}\n  }\n}&quot;,
+  &quot;text&quot;: &quot;{\n  \&quot;token\&quot;:\&quot;${customer_token}\&quot;,\n  \&quot;air\&quot;: {\n    \&quot;items\&quot;: [\n      ${air_item_id}\n    ]\n  },\n  \&quot;sea\&quot;:{\n    \&quot;items\&quot;: [\n      ${sea_item_id}\n    ]\n  },\n  \&quot;insurance\&quot;: {\n    \&quot;${item_id}\&quot;: \&quot;${insured_value}\&quot;\n  },\n  \&quot;sc_protect\&quot;: {\n    \&quot;avail\&quot;: \&quot;${sc_protect}\&quot;\n  },\n  \&quot;shipment_location_details\&quot;: {\n    \&quot;origin\&quot;: \&quot;${origin}\&quot;,\n    \&quot;destination\&quot;: \&quot;${destination}\&quot;\n  },\n  \&quot;warehouse_id\&quot;: {\n    \&quot;${item_id}\&quot;: ${warehouse_id}\n  }\n}&quot;,
   &quot;contentType&quot;: &quot;application/json&quot;,
   &quot;charset&quot;: &quot;UTF-8&quot;
 }</httpBodyContent>
@@ -20,14 +22,9 @@
       <name>Content-Type</name>
       <type>Main</type>
       <value>application/json</value>
+      <webElementGuid>6b48c27c-7031-4ca1-936b-03b8bce2a131</webElementGuid>
    </httpHeaderProperties>
-   <httpHeaderProperties>
-      <isSelected>true</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>Authorization</name>
-      <type>Main</type>
-      <value>Bearer ${customer_token}</value>
-   </httpHeaderProperties>
+   <maxResponseSize>-1</maxResponseSize>
    <migratedVersion>5.4.1</migratedVersion>
    <restRequestMethod>POST</restRequestMethod>
    <restUrl>${base_url}/api/shipments</restUrl>
@@ -35,7 +32,10 @@
    <soapBody></soapBody>
    <soapHeader></soapHeader>
    <soapRequestMethod></soapRequestMethod>
+   <soapServiceEndpoint></soapServiceEndpoint>
    <soapServiceFunction></soapServiceFunction>
+   <socketTimeout>-1</socketTimeout>
+   <useServiceInfoFromWsdl>true</useServiceInfoFromWsdl>
    <variables>
       <defaultValue>GlobalVariable.base_url</defaultValue>
       <description></description>

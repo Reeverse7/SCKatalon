@@ -104,4 +104,14 @@
       <initValue>findTestData('Cart Items')</initValue>
       <name>td_cart_items</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>0</initValue>
+      <name>per_pound_offsize_sea</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>''</initValue>
+      <name>stere_insurance_percentage</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>

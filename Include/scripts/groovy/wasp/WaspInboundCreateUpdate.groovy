@@ -55,6 +55,9 @@ class WaspInboundCreateUpdate {
 		def row_count = (GlobalVariable.td_parcel_data).getRowNumbers();
 		for (int i = 1; i <= row_count; i++) {
 			parameter.account_number = GlobalVariable.td_parcel_data.getValue("account_number",i);
+			parameter.account_name = GlobalVariable.td_parcel_data.getValue("account_name",i);
+			parameter.received_at_warehouse = GlobalVariable.td_parcel_data.getValue("received_at_warehouse",i);
+			parameter.updated_at_warehouse = GlobalVariable.td_parcel_data.getValue("updated_at_warehouse",i);
 			parameter.warehouse = GlobalVariable.td_parcel_data.getValue("warehouse",i);
 			parameter.item_courier_tracking = GlobalVariable.td_parcel_data.getValue("item_courier_tracking",i);
 			parameter.item_courier = GlobalVariable.td_parcel_data.getValue("item_courier",i);
@@ -67,21 +70,26 @@ class WaspInboundCreateUpdate {
 			parameter.item_weight = GlobalVariable.td_parcel_data.getValue("item_weight",i);
 			parameter.item_dangerous = GlobalVariable.td_parcel_data.getValue("item_dangerous",i);
 			parameter.item_prohibited = GlobalVariable.td_parcel_data.getValue("item_prohibited",i);
+			parameter.prohibited_note = GlobalVariable.td_parcel_data.getValue("prohibited_note",i);
 			parameter.special_handling = GlobalVariable.td_parcel_data.getValue("special_handling",i);
 			parameter.item_air = GlobalVariable.td_parcel_data.getValue("item_air",i);
 			parameter.item_sea = GlobalVariable.td_parcel_data.getValue("item_sea",i);
+			parameter.create_timestamp = GlobalVariable.td_parcel_data.getValue("create_timestamp",i);
+			parameter.updated_timestamp = GlobalVariable.td_parcel_data.getValue("updated_timestamp",i);
+
+			def image_list = GlobalVariable.td_parcel_data.getValue("image_url",i);
+			def list = Eval.me(image_list)
+			parameter.image_url = list[0]
 
 			ResponseObject pcresponse = WS.sendRequest(findTestObject('Object Repository/WASP Inbound/WASP Parcel Create', parameter));
 			WS.verifyResponseStatusCode(pcresponse, 201)
 
 			def slurper = new groovy.json.JsonSlurper()
 			def result = slurper.parseText(pcresponse.getResponseBodyContent())
-			def parcelID = result.id
-			def whID = result.warehouseItemId
-			GlobalVariable.warehouse_id = whID
-			GlobalVariable.parcel_id = parcelID
-			parameter.parcel_id = GlobalVariable.parcel_id;
-			parameter.warehouse_id = GlobalVariable.warehouse_id;
+			parameter.parcel_id = result.id
+			parameter.warehouse_id = result.warehouseItemId
+
+
 			ResponseObject puresponse = WS.sendRequest(findTestObject('Object Repository/WASP Inbound/WASP Parcel Update',parameter));
 			WS.verifyResponseStatusCode(puresponse, 200)
 		}

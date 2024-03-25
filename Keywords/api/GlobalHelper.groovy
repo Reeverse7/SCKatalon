@@ -29,6 +29,12 @@ public class GlobalHelper {
 			GlobalVariable.warehouse_id = 2;
 		} else if (origin == "AU"){
 			GlobalVariable.warehouse_id = 3;
+		} else if (origin == "KR"){
+			GlobalVariable.warehouse_id = 4;
+		} else if (origin == "JP"){
+			GlobalVariable.warehouse_id = 5;
+		} else if (origin == "OR"){
+			GlobalVariable.warehouse_id = 6;
 		}
 	}
 }

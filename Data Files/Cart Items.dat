@@ -3,10 +3,11 @@
    <description></description>
    <name>Cart Items</name>
    <tag></tag>
+   <connectionProperties/>
    <containsHeaders>true</containsHeaders>
    <csvSeperator>COMMA</csvSeperator>
    <dataFileGUID>44edcab8-85c9-409f-a1ad-1db9af536e93</dataFileGUID>
-   <dataSourceUrl>C:\Users\Karla\Katalon Studio\ShippingCart\Cart Items.csv</dataSourceUrl>
+   <dataSourceUrl>C:\Users\rdela\Documents\Quad-X\ShippingCart\Katalon\SC 2021\ShippingCart - Temp\Cart Items.csv</dataSourceUrl>
    <driver>CSV</driver>
    <isInternalPath>false</isInternalPath>
    <query></query>

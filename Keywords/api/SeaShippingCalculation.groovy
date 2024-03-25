@@ -21,7 +21,7 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable
 
 public class SeaShippingCalculation extends ShippingCalculation {
-	
+
 	@Keyword
 	def getItemChargeableWeight(double lngth, double wdth, double hght, double wght, double minChargeAir, double minChargeSea) {
 
@@ -29,30 +29,45 @@ public class SeaShippingCalculation extends ShippingCalculation {
 		def item_chargeable_weight_sea = Math.max(volumetric_weight, minChargeSea);
 		GlobalVariable.item_chargeable = item_chargeable_weight_sea;
 		println "item chargeable weight for sea: " + GlobalVariable.item_chargeable
-
 	}
 
 	@Keyword
-	def getTotalCargoFee(int spcl_hndling){
+	def getTotalCargoFee(int spcl_hndling, int off_size){
 		double item_chargeable_weight;
 		def lbs_value;
 		double total_cargo_fee;
 
 		item_chargeable_weight = GlobalVariable.item_chargeable as Double;
 		item_chargeable_weight = item_chargeable_weight.round(2);
-		
+
 		if (spcl_hndling == 1){
-		lbs_value = GlobalVariable.per_pound_sh_sea as Double;
-		println("per pound value for sea special handling: " + lbs_value)
-		} else{
-		lbs_value = GlobalVariable.per_pound_sea as Double;
-		println("per pound value for sea cargo: " + lbs_value)
+			lbs_value = GlobalVariable.per_pound_sh_sea as Double;
+			println("per pound value for sea special handling: " + lbs_value)
+		} else {
+			lbs_value = GlobalVariable.per_pound_sea as Double;
+			println("per pound value for sea cargo: " + lbs_value);
 		}
+		if (off_size == 1){
+			lbs_value = GlobalVariable.per_pound_offsize_sea as Double;
+			println("per pound value for offsize sea: " + lbs_value)
+		} else if (off_size == 0) {
+			lbs_value = GlobalVariable.per_pound_sea as Double;
+			println("per pound value for sea cargo: " + lbs_value);
+		}else if (spcl_hndling && off_size == 1){
+			lbs_value = GlobalVariable.per_pound_offsize_sea as Double;
+			println("per pound value for offsize sea: " + lbs_value)
+		}
+		else {
+			println("Invalid value for off_size: " + off_size);
+			return; // Return without performing further calculations if the special handling value is invalid
+		}
+
+
+
 		println("SEA Fixed fee: "+ GlobalVariable.sea_fixed_fee)
 		total_cargo_fee = ((item_chargeable_weight * lbs_value) + (GlobalVariable.sea_fixed_fee as Double));
 		GlobalVariable.total_cargo_fee = total_cargo_fee.round(2);
 		println("Total Cargo Fee:" + GlobalVariable.total_cargo_fee);
 	}
-
-	
+	//
 }

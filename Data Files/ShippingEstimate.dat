@@ -3,10 +3,11 @@
    <description></description>
    <name>ShippingEstimate</name>
    <tag></tag>
+   <connectionProperties/>
    <containsHeaders>true</containsHeaders>
    <csvSeperator>COMMA</csvSeperator>
    <dataFileGUID>43afe9af-e906-4c1e-bf43-a5509d556bb7</dataFileGUID>
-   <dataSourceUrl>C:\Users\Karla\Desktop\SC\Automation Data\GetShippingEstimate1.csv</dataSourceUrl>
+   <dataSourceUrl>C:\Users\rdela\Documents\Quad-X\ShippingCart\Katalon\SC 2021\ShippingCart - Copy\GetShippingEstimate.csv</dataSourceUrl>
    <driver>CSV</driver>
    <isInternalPath>false</isInternalPath>
    <query></query>
